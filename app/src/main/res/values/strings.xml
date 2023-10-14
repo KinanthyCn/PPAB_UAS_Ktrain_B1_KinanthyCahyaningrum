@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Ktrain</string>
+    <array name="Kereta">
+        <item>Gajayana</item>
+        <item>Kertanegara</item>
+        <item>Sancaka</item>
+        <item>Argo Lawu</item>
+        <item>Kahuripan</item>
+        <item>Argo Semeru</item>
+        <item>taksaka</item>
+    </array>
+    <array name="Kota">
+        <item>Kediri (KD)</item>
+        <item>Surabaya Gubeng (SGU)</item>
+        <item>Jakarta Gambir</item>
+        <item>Pasar Senen (PSE)</item>
+        <item>Malang Kota</item>
+        <item>Kota Bandung (BD)</item>
+        <item>Semarang Tawang</item>
+        <item>Solo Balapan</item>
+        <item>Madiun</item>
+    </array>
+    <array name="Class">
+        <item>Panoramic</item>
+        <item>Luxury</item>
+        <item>Eksekutif</item>
+        <item>Bisnis</item>
+        <item>Ekonomi Premium</item>
+        <item>Ekonomi</item>
+    </array>
+</resources>

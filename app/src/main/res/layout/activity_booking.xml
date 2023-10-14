@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookingActivity"
+    android:background="#9BABBB"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/pemandangan"
+                android:translationY="30dp" />
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="867dp"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:text="Rencana Perjalanan"
+                        android:textColor="#CA4D79"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="Dari"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/asal"
+                        android:layout_width="350dp"
+                        android:layout_height="40dp"
+                        android:background="#F1E6E9" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="Ke"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/tujuan"
+                        android:layout_width="350dp"
+                        android:layout_height="40dp"
+                        android:background="#F1E6E9" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="Kereta"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/train"
+                        android:layout_width="350dp"
+                        android:layout_height="40dp"
+                        android:background="#F1E6E9" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="Class"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+
+                    <Spinner
+                        android:id="@+id/classTrain"
+                        android:layout_width="350dp"
+                        android:layout_height="40dp"
+                        android:background="#F1E6E9" />
+
+                    <Button
+                        android:id="@+id/show_date_picker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:backgroundTint="#BFA2AC"
+                        android:text="Tanggal Berangkat" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Paket"
+                        android:textColor="#CA4D79"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Switch
+                                android:id="@+id/switch2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Santapan Enak" />
+
+                            <Switch
+                                android:id="@+id/switch3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Discount Package" />
+
+                            <Switch
+                                android:id="@+id/switch4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Safe Travel Kit" />
+
+                            <Switch
+                                android:id="@+id/switch5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Asuransi Perjalanan" />
+
+                            <Switch
+                                android:id="@+id/switch6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Hiburan" />
+
+                            <Switch
+                                android:id="@+id/switch7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="selimut dan Bantal" />
+
+                            <Switch
+                                android:id="@+id/switch8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Layanan Porter" />
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:text="Total harga : "
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/harga"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:text="Rp.0"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <Button
+                        android:id="@+id/btn_booking"
+                        android:layout_width="250dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:backgroundTint="#C17690"
+                        android:text="Pesan Kereta"
+                        android:textSize="20dp" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+</LinearLayout>
