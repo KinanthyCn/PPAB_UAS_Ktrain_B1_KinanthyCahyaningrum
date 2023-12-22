@@ -155,7 +155,7 @@ class BookingFragment : Fragment() {
                     300000
 
                 } else {
-                    1000000
+                   0
 
                 }
                 val hargaPaket = switches.size * 50000
@@ -236,7 +236,7 @@ class BookingFragment : Fragment() {
                 300000
 
             } else {
-                1000000
+                0
 
             }
             var hargaPaket = switches.filterNotNull().size * 50000
