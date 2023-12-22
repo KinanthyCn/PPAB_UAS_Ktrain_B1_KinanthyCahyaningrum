@@ -5,6 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.util.Executors
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Source
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.kinan.ktrain.adapter.RiwayatAdapter
+import com.kinan.ktrain.authentication.PrefManager
+import com.kinan.ktrain.database.Paket
+import com.kinan.ktrain.database.TrainDB
+import com.kinan.ktrain.database.TrainDao
+import com.kinan.ktrain.database.TrainRoomDB
+import com.kinan.ktrain.databinding.FragmentHistoryBinding
+import java.util.concurrent.ExecutorService
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,43 +33,89 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val binding by lazy {
+        FragmentHistoryBinding.inflate(layoutInflater)
     }
+    private lateinit var mFavoritDao: TrainDao
+    private lateinit var executorService: ExecutorService
+    private val firestore = FirebaseFirestore.getInstance()
+
+
+
+    val adapterPaket = RiwayatAdapter(
+        listHistory = emptyList<Paket>().toMutableList(),
+        onClick = {
+            insert(TrainDB(
+                departure = it.departure,
+                destination = it.destination,
+                train = it.train,
+                classTrain = it.classTrain,
+                uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+            ))
+            Toast.makeText(requireActivity(), "Berhasil ditambahkan ke favorit", Toast.LENGTH_SHORT).show()
+
+
+
+
+        }
+
+    )
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onResume() {
+        super.onResume()
+        val dbPesanan = Firebase.firestore.collection("pesanan")
+        val userId =  PrefManager.getInstance(requireContext()).getId().toString()
+
+        dbPesanan.whereEqualTo("uid",userId ).get(Source.SERVER).addOnSuccessListener {
+            val listPesanan = it.toObjects(Paket::class.java)
+            adapterPaket.listHistory.clear()
+            adapterPaket.listHistory.addAll(listPesanan)
+            adapterPaket.notifyDataSetChanged()
+        }
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        executorService = java.util.concurrent.Executors.newSingleThreadExecutor()
+        val db = TrainRoomDB.getDatabase(requireContext())
+        mFavoritDao = db!!.trainDao()!!
+
+        val dbPesanan = Firebase.firestore.collection("pesanan")
+        dbPesanan.get().addOnSuccessListener {
+            for (data in it){
+                val paket = data.toObject(Paket::class.java)
+                if (paket.uid == FirebaseAuth.getInstance().currentUser?.uid.toString()){
+                    adapterPaket.listHistory.add(paket)
                 }
             }
+            memasukkanDataListKeretaDariFirebaseKeDalamAdapterRecyclerViewHistory(adapterPaket.listHistory)
+        }
     }
+    private fun memasukkanDataListKeretaDariFirebaseKeDalamAdapterRecyclerViewHistory(listPesanan: List<Paket>){
+        binding.rvHistory.apply{
+            layoutManager = LinearLayoutManager(requireActivity())
+            adapter = adapterPaket
+        }
+
+        adapterPaket.listHistory.clear()
+        adapterPaket.listHistory.addAll(listPesanan)
+        adapterPaket.notifyDataSetChanged()
+    }
+    private fun insert(favorit: TrainDB){
+        executorService.execute {
+            mFavoritDao.insertAll(favorit)
+        }
+    }
+
 }

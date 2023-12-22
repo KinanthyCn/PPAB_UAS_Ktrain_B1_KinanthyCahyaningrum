@@ -1,8 +1,9 @@
-package com.kinan.ktrain
+package com.kinan.ktrain.welcomePage
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kinan.ktrain.authentication.LogRegScreen
 import com.kinan.ktrain.databinding.ActivityWelcomePageBinding
 
 class WelcomePage : AppCompatActivity() {

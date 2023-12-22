@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/dashboardFragment"
         android:icon="@drawable/baseline_home_24"
         android:title="Beranda"
         />
     <item
+        android:id="@+id/historyFragment"
         android:icon="@drawable/baseline_card_travel_24"
         android:title="Perjalanan Saya"/>
     <item
+        android:id="@+id/akunFragment"
         android:icon="@drawable/baseline_person_24"
         android:title="Akun"/>
 </menu>

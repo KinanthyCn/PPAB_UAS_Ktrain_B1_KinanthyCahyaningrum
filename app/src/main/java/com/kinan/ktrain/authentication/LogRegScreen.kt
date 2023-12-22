@@ -1,10 +1,11 @@
-package com.kinan.ktrain
+package com.kinan.ktrain.authentication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kinan.ktrain.adapter.TabAdapter
 import com.kinan.ktrain.databinding.ActivityLogRegScreenBinding
 
 class LogRegScreen : AppCompatActivity() {

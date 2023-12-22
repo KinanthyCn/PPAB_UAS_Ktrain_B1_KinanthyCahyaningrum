@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation_admin"
+    app:startDestination="@id/dashboad_admin_Fragment">
+
+    <fragment
+        android:id="@+id/dashboad_admin_Fragment"
+        android:name="com.kinan.ktrain.admin.Dashboad_admin_Fragment"
+        android:label="fragment_dashboad_admin_"
+        tools:layout="@layout/fragment_dashboad_admin_" >
+        <action
+            android:id="@+id/action_dashboad_admin_Fragment_to_addTrainFragment"
+            app:destination="@id/addTrainFragment" />
+        <action
+            android:id="@+id/action_dashboad_admin_Fragment_to_updateTrainFragment"
+            app:destination="@id/updateTrainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/akun_Admin_Fragment"
+        android:name="com.kinan.ktrain.admin.Akun_Admin_Fragment"
+        android:label="fragment_akun__admin_"
+        tools:layout="@layout/fragment_akun__admin_" />
+    <fragment
+        android:id="@+id/addTrainFragment"
+        android:name="com.kinan.ktrain.admin.AddTrainFragment"
+        android:label="fragment_add_train"
+        tools:layout="@layout/fragment_add_train" >
+        <action
+            android:id="@+id/action_addTrainFragment_to_dashboad_admin_Fragment"
+            app:destination="@id/dashboad_admin_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateTrainFragment"
+        android:name="com.kinan.ktrain.admin.UpdateTrainFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="departure"
+            app:argType="string" />
+        <argument
+            android:name="destination"
+            app:argType="string" />
+        <argument
+            android:name="train"
+            app:argType="string" />
+        <argument
+            android:name="classTrain"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_updateTrainFragment_to_dashboad_admin_Fragment"
+            app:destination="@id/dashboad_admin_Fragment" />
+    </fragment>
+</navigation>

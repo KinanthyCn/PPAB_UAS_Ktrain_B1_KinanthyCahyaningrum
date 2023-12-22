@@ -131,7 +131,8 @@
                         android:text="Log out"
                         android:textStyle="bold"
                         android:textSize="20sp"
-                        android:textColor="#FFFFFF"/>
+                        android:textColor="#FFFFFF"
+                        android:id="@+id/btn_logout"/>
 
 
                 </LinearLayout>
